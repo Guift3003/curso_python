@@ -36,7 +36,7 @@ def criar_menu():
 
 
 def voltar_ao_menu_principal():
-    input("Pressione Enter para voltar ao menu principal...")
+    input("Pressione Enter para voltar ao menu principal....")
     main()
 
 
