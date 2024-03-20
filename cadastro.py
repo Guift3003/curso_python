@@ -44,13 +44,14 @@ def criar_titulo(titulo):
     os.system("cls")
     print(f"**** {titulo} ****\n")
 
+
 def cadastrar_produto():
     criar_titulo("CADASTRO DE PRODUTOS")
 
     codigo = int(input("Codigo do produto: "))
     nome = input("Nome do produto: ")
     valor = float(input("Valor do produto: "))
-    fabricante = input("Fabricante do produto")
+    fabricante = input("Fabricante do produto: ")
     ativo = False
 
     produtos.append(
@@ -81,11 +82,12 @@ def exibir_produtos():
         codigo = produto["codigo"]
         nome = produto["nome"]
         valor = produto["valor"]
+        status = ""
         if produto["ativo"]:
             status = "ATIVO"
         else:
             status = "INATIVO"
-        print(f"{codigo:<10}  {nome:<30}  R$ {valor:>6} {status:>}")
+        print(f"{codigo:<10}  {nome:^30}  R$ {valor:>6} {status:^15}")
         print("-------------------------------------------------------------------------")
 
     print()
@@ -98,7 +100,6 @@ def excluir_produto():
     # indice = int(input("Qual o índice do produto que será removido? "))
 
     nome_produto = input("Qual o nome do produto? ")
-
     produtos.remove(nome_produto)
 
     # confirmacao = input(f"Você confirma a exclusão do produto {produtos[indice]} (s/n)?")
@@ -112,13 +113,15 @@ def excluir_produto():
 
     voltar_ao_menu_principal()
 
+
 def status_produto():
 
+    criar_titulo("Ativar ou Desativar Produto")
     codigo_status_novo = int(input("Digite o código do produto que você deseja alterar o status: "))
 
     for produto in produtos:
         if produto["codigo"] == codigo_status_novo:
-            acao = int(input("Digite 0 se você deseja ATIVAR o produto.\nDigite 1 se você deseja DESATIVAR o produto\n"))
+            acao = int(input("Digite 0 para ATIVAR o produto.\nDigite 1 para DESATIVAR o produto\n"))
             if acao == 0:
                 produto["ativo"] = True
                 print("O status do produto foi alterado")
@@ -127,14 +130,9 @@ def status_produto():
                 produto["ativo"] = False
                 print("O status do produto foi alterado")
                 voltar_ao_menu_principal()
+            break
     print("Produto não encontrado")
     voltar_ao_menu_principal()
-
-
-
-
-
-
 
 
 def escolher_opcao():
