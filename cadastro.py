@@ -1,4 +1,5 @@
 import os
+import csv
 
 produtos = [
     {
@@ -52,17 +53,12 @@ def cadastrar_produto():
     nome = input("Nome do produto: ")
     valor = float(input("Valor do produto: "))
     fabricante = input("Fabricante do produto: ")
-    ativo = False
 
-    produtos.append(
-        {
-            "codigo": codigo,
-            "nome": nome,
-            "valor": valor,
-            "fabricante": fabricante,
-            "ativo": ativo
-        }
-    )
+    # Gravar o produto no arquivo produtos.csv
+
+    with open("produtos.csv", "a", newline="") as arquivo_rodutos:
+        escritor = csv.writer(arquivo_rodutos)
+        escritor.writerow([codigo, nome, valor, fabricante, "false"])
 
     print()
     print(f"Produto {nome.upper()}, cadastrado com sucesso!\n")
@@ -71,25 +67,21 @@ def cadastrar_produto():
 
 def exibir_produtos():
     criar_titulo("LISTAR PRODUTOS")
-
-    tamanho_vetor = len(produtos)
-
-    print(f"Total de produtos cadastrados: {tamanho_vetor}")
-    print()
-    print(f"")
     print("-------------------------------------------------------------------------")
-    for produto in produtos:
-        codigo = produto["codigo"]
-        nome = produto["nome"]
-        valor = produto["valor"]
-        status = ""
-        if produto["ativo"]:
-            status = "ATIVO"
-        else:
-            status = "INATIVO"
-        print(f"{codigo:<10}  {nome:^30}  R$ {valor:>6} {status:^15}")
-        print("-------------------------------------------------------------------------")
 
+    qtd_produtos = -1
+    with open("produtos.csv", "r",) as arquivo_produtos:
+        leitor = csv.reader(arquivo_produtos)
+        for linha in leitor:
+            qtd_produtos = qtd_produtos + 1
+            if linha[4] == "false":
+                linha[4] = "INATIVO"
+            else:
+                linha[4] = "ATIVO"
+            print(f"{linha[0]:<10}  {linha[1]:^30}  R$ {linha[2]:>8} {linha[4]:>15}")
+
+    print()
+    print(f"Total de produtos cadastrados: {qtd_produtos}")
     print()
     voltar_ao_menu_principal()
 

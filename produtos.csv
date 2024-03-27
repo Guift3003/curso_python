@@ -1,0 +1,7 @@
+CODIGO, NOME, VALOR, FABRICANTE, STATUS
+400,apontador,100.0,multilaser,False
+500,hd ssd,345.0,giga,False
+600,PC,1000.0,HP,False
+200,cpu,5000.0,logitec,False
+700,teclado,50.0,logitec,false
+800,Monitor,700.0,dell,false

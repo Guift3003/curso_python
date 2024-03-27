@@ -1,24 +1,29 @@
-frutas = ["Uva", "Abacate", "Laranja", "Melancia"]
+import tkinter as tk
+from cProfile import label
 
-for x in range(len(frutas)):
-    print(frutas[x])
+janela = tk.Tk()  # Desenha a tela
 
-print("--------------")
+janela.title("Minha Primera Janela")
 
-for fruta in frutas:
-    print(fruta)
+texto = tk.Label(janela, text="Este texto está dentro da janela")
+texto2 = tk.Label(janela, text="Este é outro texto")
+texto3 = tk.Label(janela, text="SENAI Jandira")
 
-for i in range(10):
-    print(f"{i} - Teste")
+texto.grid(column=0, row=0)
+texto2.grid(column=1, row=1)
+texto3.grid(column=2, row=2)
 
-print("------------")
 
-i = 0
-while i < 10:
-    print("teste")
-    i = i +1
 
-print("----------------------")
-numeros = [50, 68, 78, 32, 37, 0, 34, 57]
-for numero in numeros:
-    print(numero)
+
+
+
+
+
+
+
+
+
+janela.mainloop()  # Mantém a tela vizível em loop infinito
+
+
