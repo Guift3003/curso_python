@@ -87,6 +87,7 @@ def exibir_produtos():
 
 
 def excluir_produto():
+
     criar_titulo("Excluir Produto.")
 
     # indice = int(input("Qual o índice do produto que será removido? "))
